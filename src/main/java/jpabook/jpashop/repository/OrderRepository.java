@@ -104,4 +104,13 @@ public class OrderRepository {
     /**
      * query dsl
      */
+
+
+
+    public List<Order> findAllWithMemberDelivery(){
+        return em.createQuery("select o from Order o "+
+                "join fet   ch o.member m" +
+                "join fetch o.delivery d", Order.class
+        ).getResultList();
+    }
 }
